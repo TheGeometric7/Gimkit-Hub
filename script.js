@@ -1,47 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gimkit Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="menu">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </div>
-    <div class="banner">
-        <h1>Gims</h1>
-    </div>
-    <div id="search-container">
-        <input type="text" id="search-input" placeholder="Search..." onkeyup="filterButtons()">
-        <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-    </div>
-    <div class="category-buttons">
-        <button class="category-button all active" onclick="filterByCategory('All')">All</button>
-        <button class="category-button uncommon" onclick="filterByCategory('Uncommon')">Uncommon</button>
-        <button class="category-button rare" onclick="filterByCategory('Rare')">Rare</button>
-        <button class="category-button epic" onclick="filterByCategory('Epic')">Epic</button>
-        <button class="category-button legendary" onclick="filterByCategory('Legendary')">Legendary</button>
-        <button class="category-button unreleased" onclick="filterByCategory('Unreleased')">Unreleased</button>
-        <button class="category-button unobtainable" onclick="filterByCategory('Unobtainable')">Unobtainable</button>
-    </div>
-    <div id="button-container"></div>
-    <div id="modal">
-        <div id="modal-content">
-            <img id="modal-image" src="" alt="Image">
-            <div id="modal-text">
-                <h2 id="modal-header"></h2>
-                <p id="modal-body"></p>
-            </div>
-            <span id="close-btn">&times;</span>
-        </div>
-    </div>
-    <script>
-        const names = ["Day One", "Echo Agent", "Green Split", "Stache", "Vortex Agent", "Graydient", "Kynami", "Red Sprinkles"];
-        const filenames = ["dayOne", "echoAgent", "stripeDoubleGreen", "mustache", "vortexAgent", "grayGradient", "redNinja", "sprinklesRed"];
+/*const names = ["Day One", "Echo Agent", "Green Split", "Stache", "Vortex Agent", "Graydient", "Kynami", "Red Sprinkles"];
+        */const filenames = ["dayOne", "echoAgent", "stripeDoubleGreen", "mustache", "vortexAgent", "grayGradient", "redNinja", "sprinklesRed"];
         const info = ["Day One is...", "Echo Agent Is...", "Green Split is...", "Stache is...", "Vortex Agent is...", "Graydient is...", "Kynami is...", "Red Sprinkles is..."];
         const categories = ["Epic", "Rare", "Uncommon", "Rare", "Rare", "Uncommon", "Epic", "Uncommon"];
         const buttonContainer = document.getElementById('button-container');
@@ -110,6 +68,33 @@
             const selectedButton = [...categoryButtons].find(btn => btn.textContent.toLowerCase() === category.toLowerCase());
             if (selectedButton) selectedButton.classList.add('active');
         }
-    </script>
-</body>
-</html>
+
+/**/
+
+
+        // URL of the raw text file on GitHub
+const fileUrl = 'https://raw.githubusercontent.com/your-username/your-repository/main/names.txt';
+
+// Initialize the names array
+let names = [];
+
+// Fetch the text file content
+fetch(fileUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to load the file');
+        }
+        return response.text();  // Parse the content of the file as text
+    })
+    .then(data => {
+        // Split the text into an array, assuming each name is on a new line
+        names = data.split('\n').map(name => name.trim()); // Trim any extra spaces or line breaks
+        console.log(names); // Log the array to the console (optional)
+
+        // Display the names array in the <pre> tag on the webpage
+        document.getElementById('namesList').textContent = JSON.stringify(names, null, 2);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('namesList').textContent = 'Error loading names.';
+    });

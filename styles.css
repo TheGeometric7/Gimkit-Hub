@@ -5,12 +5,12 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f;
+            background-color: #f4f4f4;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: 100vw;
             position: relative;
             overflow-x: hidden;
         }
@@ -87,7 +87,7 @@
             cursor: pointer;
             border: none;
             border-radius: 1.5vw;
-            background-color: #ddddddd;
+            background-color: #dddddd;
             transition: background-color 0.3s ease, color 0.3s ease;
             text-align: center;
             width: 8vw;
