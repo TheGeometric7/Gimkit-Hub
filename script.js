@@ -73,7 +73,7 @@
 
 
         // URL of the raw text file on GitHub
-const fileUrl = 'https://raw.githubusercontent.com/your-username/your-repository/main/names.txt';
+const fileUrl = 'https://raw.githubusercontent.com/TheGeometric7/Gimkit-Hub/refs/heads/main/gims.txt?token=GHSAT0AAAAAAC2MCYBCZFHPZG2KCC6A45CQZZTYKDQ';
 
 // Initialize the names array
 let names = [];
