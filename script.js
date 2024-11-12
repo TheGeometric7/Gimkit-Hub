@@ -1,5 +1,5 @@
-/*const names = ["Day One", "Echo Agent", "Green Split", "Stache", "Vortex Agent", "Graydient", "Kynami", "Red Sprinkles"];
-        */const filenames = ["dayOne", "echoAgent", "stripeDoubleGreen", "mustache", "vortexAgent", "grayGradient", "redNinja", "sprinklesRed"];
+const names = ["Day One", "Echo Agent", "Green Split", "Stache", "Vortex Agent", "Graydient", "Kynami", "Red Sprinkles"];
+        const filenames = ["dayOne", "echoAgent", "stripeDoubleGreen", "mustache", "vortexAgent", "grayGradient", "redNinja", "sprinklesRed"];
         const info = ["Day One is...", "Echo Agent Is...", "Green Split is...", "Stache is...", "Vortex Agent is...", "Graydient is...", "Kynami is...", "Red Sprinkles is..."];
         const categories = ["Epic", "Rare", "Uncommon", "Rare", "Rare", "Uncommon", "Epic", "Uncommon"];
         const buttonContainer = document.getElementById('button-container');
@@ -68,33 +68,3 @@
             const selectedButton = [...categoryButtons].find(btn => btn.textContent.toLowerCase() === category.toLowerCase());
             if (selectedButton) selectedButton.classList.add('active');
         }
-
-/**/
-
-
-        // URL of the raw text file on GitHub
-const fileUrl = 'https://raw.githubusercontent.com/TheGeometric7/Gimkit-Hub/refs/heads/main/gims.txt?token=GHSAT0AAAAAAC2MCYBCZFHPZG2KCC6A45CQZZTYKDQ';
-
-// Initialize the names array
-let names = [];
-
-// Fetch the text file content
-fetch(fileUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to load the file');
-        }
-        return response.text();  // Parse the content of the file as text
-    })
-    .then(data => {
-        // Split the text into an array, assuming each name is on a new line
-        names = data.split('\n').map(name => name.trim()); // Trim any extra spaces or line breaks
-        console.log(names); // Log the array to the console (optional)
-
-        // Display the names array in the <pre> tag on the webpage
-        document.getElementById('namesList').textContent = JSON.stringify(names, null, 2);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('namesList').textContent = 'Error loading names.';
-    });
