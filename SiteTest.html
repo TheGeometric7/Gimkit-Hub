@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimkit Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #4527a0;
+            background: linear-gradient(304deg, #4527a0, #2d1a68);
+            font-family: 'Fugaz One', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #999;
+            display: flex;
+            justify-content: center;
+            height: 5vw;
+            padding: 0.5vw 0;
+            z-index: 10;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 1vw 1vw;
+            font-size: 2vw;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .menu a:hover {
+            color: #ddd;
+            transform: scale(1.1);
+        }
+        .banner {
+            width: 100%;
+            margin: 0;
+            background-color: #130b2d;
+            color: white;
+            padding: 5vw 0 3vw 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 8vw;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 0;
+        }
+        #search-container {
+            position: relative;
+            margin-top: 2vw;
+            margin-bottom: 1vw;
+        }
+        #search-input {
+            padding: 1vw 4vw 1vw 1.5vw;
+            font-size: 1vw;
+            width: 58vw;
+            border: none;
+            border-radius: 1.5vw;
+            font-family: 'Fugaz One', sans-serif;
+        }
+        #search-icon {
+            position: absolute;
+            top: 50%;
+            left: 60vw;
+            transform: translateY(-50%);
+            width: 2vw;
+            height: 2vw;
+        }
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1vw;
+            margin-bottom: 0vw;
+        }
+        .category-button {
+            padding: 0.5vw 1vw;
+            font-size: 1.2vw;
+            cursor: pointer;
+            border: none;
+            border-radius: 1.5vw;
+            background-color: #ddddddd;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            width: 8vw;
+            flex-shrink: 0;
+        }
+        .category-button.active {
+            background-color: #007BFF;
+            color: white;
+        }
+        .category-button:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+        #button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2vw;
+            padding: 2vw;
+            max-width: 90%;
+            margin-top: 3vh;
+        }
+        button {
+            font-family: 'Fugaz One', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1vw;
+            font-size: 1.5vw;
+            cursor: pointer;
+            border: none;
+            border-radius: 1.5vw;
+            background-color: #dddddd;
+            transition: all 0.3s ease;
+            text-align: center;
+            white-space: none;
+            min-width: 12vw;
+            max-width: 12vw;
+            flex-shrink: 0;
+        }
+        button.all { background-color: #dddddd; }
+        button.uncommon { background-color: #78ff44; }
+        button.rare { background-color: #29cdff; }
+        button.epic { background-color: #a864fd; }
+        button.legendary { background-color: #fdff6a; }
+        button.unreleased { background-color: #ff718d; }
+        button.unobtainable { background-color: #dddddd; }
+        button:hover.all { background-color: #9b9b9b; }
+        button:hover.uncommon { background-color: #3fe200; }
+        button:hover.rare { background-color: #009fcf; }
+        button:hover.epic { background-color: #6e03f4; }
+        button:hover.legendary { background-color: #f9fd00; }
+        button:hover.unreleased { background-color: #ff0334; }
+        button:hover.unobtainable { background-color: #9b9b9b; }
+        button img {
+            width: 10vw;
+            height: 10vw;
+            margin-bottom: 1.5vw;
+        }
+        button span {
+            font-size: 1em;
+            line-height: 1.2;
+            flex-grow: 1;
+            text-align: center;
+            word-wrap: break-word;
+            white-space: normal;
+        }
+        button:hover {
+            background-color: #007BFF;
+            color: white;
+            transform: scale(1.1);
+        }
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 0.5vw #007BFF;
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 2.5vw;
+            border: none;
+            width: 75vw;
+            max-width: 600px;
+            border-radius: 2vw;
+            display: flex;
+            align-items: center;
+        }
+        #modal-content img {
+            width: 12vw;
+            height: 12vw;
+            margin-right: 3vw;
+        }
+        #modal-text {
+            flex-grow: 1;
+            text-align: left;
+        }
+        #close-btn {
+            color: #aaa;
+            font-size: 3vw;
+            font-weight: bold;
+            position: absolute;
+            top: 1vw;
+            right: 2vw;
+        }
+        #close-btn:hover,
+        #close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding-top: 5vw;
+            }
+            #button-container {
+                gap: 1vw;
+            }
+            button {
+                min-width: 30vw;
+                font-size: 3vw;
+            }
+            .category-button {
+                font-size: 3vw;
+                padding: 1vw 2vw;
+                width: auto;
+            }
+        }
+
+.toggle-button {
+    display: flex;
+    width: 200px; /* Adjust width as necessary */
+}
+
+.toggle-button button {
+    width: 50%; /* Each button takes up half the width */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button .selected {
+    background-color: #007bff; /* Blue background for the selected button */
+    color: white;
+}
+
+.toggle-button button:hover {
+    background-color: #e9ecef;
+}
+
+.toggle-button button svg {
+    fill: currentColor; /* Ensure icon color follows text color */
+    width: 16px;
+    height: 16px;
+}
+
+.toggle-left {
+    border-right: 1px solid #ccc;
+}
+
+.toggle-button button.selected svg {
+    fill: white; /* Ensure icon color is white when selected */
+}
+
+        
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class="banner">
+        <h1>Gims</h1>
+    </div>
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search..." onkeyup="filterButtons()">
+        <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </div>
+    <div class="category-buttons">
+        <button class="category-button all active" onclick="filterByCategory('All')">All</button>
+        <button class="category-button uncommon" onclick="filterByCategory('Uncommon')">Uncommon</button>
+        <button class="category-button rare" onclick="filterByCategory('Rare')">Rare</button>
+        <button class="category-button epic" onclick="filterByCategory('Epic')">Epic</button>
+        <button class="category-button legendary" onclick="filterByCategory('Legendary')">Legendary</button>
+        <button class="category-button unreleased" onclick="filterByCategory('Unreleased')">Unreleased</button>
+        <button class="category-button unobtainable" onclick="filterByCategory('Unobtainable')">Unobtainable</button>
+    </div>
+    <div id="button-container"></div>
+    <div id="modal">
+        <div id="modal-content">
+            <img id="modal-image" src="" alt="Image">
+            <div id="modal-text">
+                <h2 id="modal-header"></h2>
+                <p id="modal-body"></p>
+            </div>
+            <span id="close-btn">&times;</span>
+        </div>
+    </div>
+    <script>
+        const names = ["Day One", "Echo Agent", "Green Split", "Stache", "Vortex Agent", "Graydient", "Kynami", "Red Sprinkles"];
+        const filenames = ["dayOne", "echoAgent", "stripeDoubleGreen", "mustache", "vortexAgent", "grayGradient", "redNinja", "sprinklesRed"];
+        const info = ["Day One is...", "Echo Agent Is...", "Green Split is...", "Stache is...", "Vortex Agent is...", "Graydient is...", "Kynami is...", "Red Sprinkles is..."];
+        const categories = ["Epic", "Rare", "Uncommon", "Rare", "Rare", "Uncommon", "Epic", "Uncommon"];
+        const buttonContainer = document.getElementById('button-container');
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalHeader = document.getElementById('modal-header');
+        const modalBody = document.getElementById('modal-body');
+        const closeBtn = document.getElementById('close-btn');
+        const searchInput = document.getElementById('search-input');
+        function createButtons() {
+            names.forEach((name, index) => {
+                const button = document.createElement('button');
+                const img = document.createElement('img');
+                img.src = `https://www.gimkit.com/assets/map/characters/spine/preview/${filenames[index]}.png`;
+                button.classList.add('button');
+                button.setAttribute('data-category', categories[index]);
+                button.classList.add(categories[index].toLowerCase());
+                button.addEventListener('click', () => showModal(index));
+                button.appendChild(img);
+                button.appendChild(document.createTextNode(name));
+                buttonContainer.appendChild(button);
+            });
+        }
+        function showModal(index) {
+            modal.style.display = "flex";
+            modalImage.src = `https://www.gimkit.com/assets/map/characters/spine/preview/${filenames[index]}.png`;
+            modalHeader.textContent = `About ${names[index]}`;
+            modalBody.textContent = info[index];
+        }
+        function closeModal() {
+            modal.style.display = "none";
+        }
+        closeBtn.addEventListener('click', closeModal);
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+        window.addEventListener("load", () => {
+            modal.style.display = "none";
+            createButtons();
+        });
+        function filterButtons() {
+            const searchText = searchInput.value.toLowerCase();
+            const buttons = document.querySelectorAll('#button-container button');
+            buttons.forEach(button => {
+                const text = button.innerText.toLowerCase();
+                if (text.includes(searchText)) {
+                    button.style.display = 'flex';
+                } else {
+                    button.style.display = 'none';
+                }
+            });
+        }
+        function filterByCategory(category) {
+            const buttons = document.querySelectorAll('#button-container button');
+            buttons.forEach(button => {
+                if (category === 'All' || button.getAttribute('data-category') === category) {
+                    button.style.display = 'flex';
+                } else {
+                    button.style.display = 'none';
+                }
+            });
+            const categoryButtons = document.querySelectorAll('.category-button');
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            const selectedButton = [...categoryButtons].find(btn => btn.textContent.toLowerCase() === category.toLowerCase());
+            if (selectedButton) selectedButton.classList.add('active');
+        }
+    </script>
+</body>
+</html>
