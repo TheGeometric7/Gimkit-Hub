@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://www.gimkit.com/favicon.33200140.png" type="image/x-icon">
-    <title>Gims - Gimkit Hub</title>
+    <title>Trails - Gimkit Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fugaz+One&family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!--<div id="loading-screen">
-        <div class="loader"></div>
-        <p>Loading...</p>
-    </div>-->
     <div class="menu">
         <nav>
     <div class="menu">
@@ -64,7 +60,7 @@
 </nav>
     </div>
     <div class="banner">
-        <h1>Gims</h1>
+        <h1>Trails</h1>
     </div>
     <div id="search-container">
         <input type="text" id="search-input" placeholder="Search..." onkeyup="filterButtons()">
@@ -77,12 +73,11 @@
         <button class="category-button epic" onclick="filterByCategory('Epic')">Epic</button>
         <button class="category-button legendary" onclick="filterByCategory('Legendary')">Legendary</button>
         <button class="category-button unreleased" onclick="filterByCategory('Unreleased')">Unreleased</button>
-        <button class="category-button unobtainable" onclick="filterByCategory('Unobtainable')">Unobtainable</button>
     </div>
     <div id="button-container"></div>
     <div id="modal">
         <button id="close-modal-button" style="width: 3vw !important; height: 3vw !important;" onclick="closeModal()">×</button>
-        <div id="modal-content">
+        <div id="modal-content" style="width: 80vw !important;">
             <img id="modal-image" src="" alt="">
             <div id="modal-text">
                 <h2 id="modal-header"></h2>
@@ -91,6 +86,6 @@
         </div>
     </div>
     <div id="noResultsMessage" style="display: none; margin-top: 5vw !important; margin-bottom: 9vw !important; color: #ffffffcc !important; font-weight: bold !important; font-size: 5vw;">No Results Found</div>
-    <script src="gims.js"></script>
+    <script src="trails.js"></script>
 </body>
 </html>
