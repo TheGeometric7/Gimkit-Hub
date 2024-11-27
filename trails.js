@@ -1,4 +1,4 @@
-const names = ["Origin Tokens", "Burning Beats", "Slip Up", "Prism Path", "Fizz", "Sprout", "Coil", "Dusty"];
+const names = ["Origin Tokens", "Burning Beats", "Slip Up", "Prism Path", "Fizz", "Sprout", "Coil", "Dusty", "Sweet Tooth", "Cráneo", "Falling Behind", "Cob", "Speech Blast", "Iceprints", "Ball Blast", "Trailtilla", "Puzzle Pieces", "Heartbeat", "Cupid's Arrow", "Tweeters", "Dug Up", "Beachfall", "Luck Of The Irish", "Easter Eggs", "Fossil Footprints", "Confetti", "Downpour", "Fruit By The Bit", "Boo!", "Zombie Treats", "Workbench", "Match Point", "Jack Rotten", "Crawlers", "Marigold", "Ruffle", "pumpgim Slice"];
 const filenames = ["origin_token", "fire_notes", "banana_peel", "rainbow_dots", "bubble", "flowers", "metal_spring", "dust_particles"];
 const rarities = ["Epic", "Rare", "Rare", "Rare", "Epic", "Rare", "Rare", "Epic"];
 const price = [1000, 750, 750, 750, "$5", "$5", "$5", 1000];
