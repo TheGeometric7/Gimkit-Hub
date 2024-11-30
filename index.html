@@ -59,34 +59,11 @@
     </div>
 </nav>
     </div>
-    <div class="banner">
-        <h1>Gims</h1>
+    <div class="banner" style="display: block;">
+        <h1 style="font-size: 12vw; margin: 0; padding: 0;">Gimkit Hub</h1>
+        <h2 style="font-size: 2.5vw; font-weight: 800; font-family: 'Fira Sans', sans-serif; margin: 0; padding: 0;">Pre-Release Testing</h2>
     </div>
-    <div id="search-container">
-        <input type="text" id="search-input" placeholder="Search..." onkeyup="filterButtons()">
-        <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-    </div>
-    <div class="category-buttons">
-        <button class="category-button all active" onclick="filterByCategory('All')">All</button>
-        <button class="category-button uncommon" onclick="filterByCategory('Uncommon')">Uncommon</button>
-        <button class="category-button rare" onclick="filterByCategory('Rare')">Rare</button>
-        <button class="category-button epic" onclick="filterByCategory('Epic')">Epic</button>
-        <button class="category-button legendary" onclick="filterByCategory('Legendary')">Legendary</button>
-        <button class="category-button unreleased" onclick="filterByCategory('Unreleased')">Unreleased</button>
-        <button class="category-button unobtainable" onclick="filterByCategory('Unobtainable')">Unobtainable</button>
-    </div>
-    <div id="button-container"></div>
-    <div id="modal">
-        <button id="close-modal-button" style="width: 3vw !important; height: 3vw !important;" onclick="closeModal()">×</button>
-        <div id="modal-content">
-            <img id="modal-image" src="" alt="">
-            <div id="modal-text">
-                <h2 id="modal-header"></h2>
-                <p id="modal-body"></p>
-            </div>
-        </div>
-    </div>
-    <div id="noResultsMessage" style="display: none; margin-top: 5vw !important; margin-bottom: 9vw !important; color: #ffffffcc !important; font-weight: bold !important; font-size: 5vw;">No Results Found</div>
-    <script src="gims.js"></script>
+    <div id="contentContainer"></div>
+    <script src="home.js"></script>
 </body>
 </html>
