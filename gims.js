@@ -29,15 +29,7 @@ function createButtons() {
         buttonContainer.appendChild(button);
     });
 }
-function updateRightProperty() {
-    modalContent.style.width = `70vw`;
-    const modalWidth = modalContent.offsetWidth;
-    const viewportWidth = window.innerWidth;
-    const rightValue = (viewportWidth - modalWidth) / 2;
-    closeBtn.style.right = `${rightValue}px`;
-}
-window.addEventListener('load', updateRightProperty);
-window.addEventListener('resize', updateRightProperty);
+modalContent.style.width = `70vw`;
 const modalRarityColors = {"Uncommon": "#2da100", "Rare": "#007194", "Epic": "#4f02ae", "Legendary": "#b2b400", "Unreleased": "#b80024", "Unobtainable": "#805300"};
 function showModal(index) {
     window.location.hash = filenames[index];
