@@ -259,6 +259,7 @@ p {
     max-width: 90%;
 }
 button {
+    color: #000;
     font-family: 'Fugaz One', sans-serif;
     display: flex;
     flex-direction: column;
