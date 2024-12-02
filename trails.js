@@ -39,6 +39,9 @@ function showModal(index) {
     modal.style.display = "flex";
     modal.classList.add("open");
     modalImage.src = `https://www.gimkit.com/assets/map/trails/${filenames[index]}/preview.png`;
+    modalImage.onerror = () => {
+        modalImage.src = "https://www.gimkit.com/assets/map/devices/item_granter/question-mark-2.png";
+    };
     modalHeader.textContent = `${names[index]}`;
         let priceMessage = price[index] === 0 ? "for free" : price[index] === "$5" ? " for $5 USD" : `for ${price[index]} GimBucks`;
         let collectionMessage = collection[index] === "" ? "not part of any" : `part of the ${collection[index]}`;
