@@ -33,6 +33,9 @@ headings.forEach((heading, index) => {
     };
     const title = document.createElement("h1");
     title.textContent = heading;
+    button.addEventListener("click", () => {
+        window.location.href = links[index];
+    });
     button.appendChild(img);
     button.appendChild(title);
     contentContainer.appendChild(button);
