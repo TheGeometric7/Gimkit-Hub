@@ -15,6 +15,110 @@ body {
     overflow-x: hidden;
     background-size: cover;
 }
+.content-div {
+    display: flex;
+    align-items: center;
+    padding: 1vw 1vw;
+    margin: 3vw auto;
+    background-color: #00000033;
+    border-radius: 5vw;
+}
+.text-div {
+    width: 65vw;
+    box-sizing: border-box;
+    text-align: left;
+}
+.text-div h1 {
+    font-size: 6vw;
+    margin: 0;
+    padding: 0;
+    color: #ffffffcc;
+    text-align: left;
+    padding-left: 5vw;
+}
+.text-div h2 {
+    font-size: 1.5vw;
+    font-weight: 400;
+    font-family: 'Fira Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #ffffffcc;
+    padding-left: 5vw;
+}
+.text-div h2 a {
+    font-size: 1.5vw;
+    font-weight: 400;
+    font-family: 'Fira Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+.text-div h2 a.default {
+    color: #0088ffcc;
+}
+.text-div h2 a.alternate {
+    color: #aaaaaacc;
+}
+.img-div img {
+    height: 20vw;
+    width: 20vw;
+    padding: 0;
+    margin: 0;
+    transform: rotate(-5deg);
+}
+.content-div.even .img-div img {
+    transform: scaleX(-1) rotate(-5deg);
+}
+.img-div {
+    width: 30%;
+    box-sizing: border-box;
+    text-align: center;
+}
+#contentContainerCosmetics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2vw 3vw;
+    padding: 2vw;
+}
+.content-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw;
+    margin: 0;
+    background-color: #7150d4;
+    border: none;
+    border-radius: 1.5vw;
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.5);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+.content-button img {
+    width: 15vw;
+    height: 15vw;
+    margin-bottom: 1vw;
+    object-fit: cover;
+}
+.content-button h1 {
+    font-size: 3vw;
+    color: #fff;
+    margin: 0.5vw 0;
+}
+.content-button:hover {
+    transform: scale(1.05);
+    background-color: #291760;
+    color: white;
+}
+.content-button:nth-child(3n-1),
+.content-button:nth-child(3n) {
+    flex: 0 0 36vw;
+}
+.content-button:nth-child(3n-2) {
+    flex: 0 0 75vw;
+}
 .gray {
     color: #aaa !important;
 }

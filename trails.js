@@ -20,6 +20,9 @@ function createButtons() {
         const button = document.createElement('button');
         const img = document.createElement('img');
         img.src = `https://www.gimkit.com/assets/map/trails/${filenames[index]}/preview.png`;
+        img.onerror = () => {
+            img.src = "https://www.gimkit.com/assets/map/devices/item_granter/question-mark-2.png";
+        };
         button.classList.add('button');
         button.setAttribute('data-category', rarities[index]);
         button.classList.add(rarities[index].toLowerCase());

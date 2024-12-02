@@ -35,6 +35,9 @@ function createButtons() {
             img.style.paddingLeft = `${5 - (parseFloat(img.style.width) / 2)}vw`;
             img.style.paddingRight = `${5 - (parseFloat(img.style.width) / 2)}vw`;
         };
+        img.onerror = () => {
+            img.src = "https://www.gimkit.com/assets/map/devices/item_granter/question-mark-2.png";
+        };
         button.classList.add('button');
         button.setAttribute('data-category', rarities[index]);
         button.classList.add(rarities[index].toLowerCase());
@@ -66,6 +69,9 @@ function showModal(index) {
             modalImage.style.paddingLeft = `${10 - (parseFloat(modalImage.style.width) / 2)}vw`;
             modalImage.style.paddingRight = `${10 - (parseFloat(modalImage.style.width) / 2)}vw`;
         };
+    img.onerror = () => {
+        img.src = "https://www.gimkit.com/assets/map/devices/item_granter/question-mark-2.png";
+    };
     modalHeader.textContent = `${names[index]}`;
         let priceMessage = price[index] === 0 ? "for free" : price[index] === "$5" ? " for $5 USD" : `for ${price[index]} GimBucks`;
         let collectionMessage = collection[index] === "" ? "not part of any" : `part of the ${collection[index]}`;
