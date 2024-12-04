@@ -15,6 +15,35 @@ body {
     overflow-x: hidden;
     background-size: cover;
 }
+.section {
+    margin-bottom: 5vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2vw;
+    max-width: 90vw;
+}
+.section-banner {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    font-size: 4vw;
+    padding: 4vw 0vw;
+    margin-bottom: 1vw;
+    margin-top: 0;
+    box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.5);
+}
+.section-banner img {
+    object-fit: contain;
+    margin-bottom: 2vw;
+    transform: rotate(-5deg);
+}
 .content-div {
     display: flex;
     align-items: center;
@@ -353,7 +382,7 @@ p {
     justify-content: center;
     gap: 2vw;
     padding: 2vw;
-    max-width: 90%;
+    max-width: 90vw;
 }
 button {
     color: #000;
